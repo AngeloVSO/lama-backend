@@ -1,0 +1,10 @@
+POST http://localhost:3003/lama/signup
+Content-Type: application/json
+
+{
+    "name": "Ângelo ODwyer",
+    "nickname": "AngeloVSO",
+    "email": "angelo@gmail.com",
+    "password": "123123",
+    "role": "ADMIN"
+}

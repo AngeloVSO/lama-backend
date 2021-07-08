@@ -1,7 +1,7 @@
 import { compareSync, genSaltSync, hashSync } from "bcryptjs";
 
-export class HashGenerator {
-  public createHash = (plainText: string) => {
+class HashGenerator {
+  public createHash (plainText: string) {
     const salt = genSaltSync(Number(process.env.BCRYPT_COST));
     return hashSync(plainText, salt);
   };

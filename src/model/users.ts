@@ -5,10 +5,19 @@ enum USER_ROLES {
 
 export type SignupUser = {
   name: string;
+  nickname: string;
   email: string;
   password: string;
   role?: USER_ROLES;
   id: string;
+};
+
+export type SignupUserDTO = {
+  name: any;
+  nickname: any;
+  email: any;
+  password: any;
+  role?: any;
 };
 
 export type LoginDTO = {
@@ -20,3 +29,14 @@ export type AuthenticationData = {
   id: string;
   role: USER_ROLES;
 };
+
+export const toUserRoles = (value : any)=>{
+  switch (String(value).toLowerCase()){
+    case 'admin':
+      return USER_ROLES.ADMIN
+    case 'normal':
+      return USER_ROLES.NORMAL
+    default:
+      return USER_ROLES.NORMAL
+  }
+}

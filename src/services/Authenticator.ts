@@ -1,7 +1,7 @@
 import { sign, verify } from "jsonwebtoken";
 import { AuthenticationData } from "../model/users";
 
-export class TokenGenerator {
+class TokenGenerator {
   public generate = (payload: AuthenticationData): string => {
     const newToken = sign(payload, process.env.JWT_KEY!, {
       expiresIn: "30min",
@@ -13,3 +13,5 @@ export class TokenGenerator {
     return verify(token, process.env.JWT_KEY!) as AuthenticationData;
   };
 }
+
+export default new TokenGenerator()
