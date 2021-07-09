@@ -11,6 +11,15 @@ class UserDatabase extends Database {
       throw new Error(error.sqlMessage || error.message);
     }
   }
+
+  public async getUserByEmailOrNickname(input: string):Promise<void> {
+    try {
+      const [result] = await Database.connection(this.tableName).where({nickname: input}).orWhere({email: input});
+      return result
+    } catch (error) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  }
 }
 
 export default new UserDatabase();
